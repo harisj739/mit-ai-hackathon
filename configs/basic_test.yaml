@@ -1,0 +1,71 @@
+# Basic test configuration for Stressor
+
+# Test generation settings
+generation:
+  adversarial:
+    count: 50
+    categories:
+      - malformed_json
+      - special_characters
+      - mixed_languages
+      - very_long
+      - contradictory
+      - typos
+      - unicode
+  
+  prompt_injection:
+    count: 30
+    categories:
+      - role_confusion
+      - context_manipulation
+      - instruction_override
+      - system_prompt_leak
+      - jailbreak
+      - indirect_injection
+
+# Test execution settings
+execution:
+  model: gpt-3.5-turbo
+  max_concurrent: 5
+  timeout: 30
+  retries: 3
+  
+  # Rate limiting
+  rate_limit:
+    requests_per_minute: 60
+    requests_per_hour: 1000
+
+# Analysis settings
+analysis:
+  vulnerability_detection: true
+  performance_metrics: true
+  failure_classification: true
+  
+  # Reporting
+  report_format: json
+  include_details: true
+  export_csv: true
+
+# Security settings
+security:
+  input_sanitization: true
+  rate_limiting: true
+  audit_logging: true
+  
+  # API key management
+  key_rotation: false
+  encryption: true
+
+# Storage settings
+storage:
+  database_url: sqlite:///./failproof_llm.db
+  data_directory: ./data
+  backup_directory: ./backups
+  retention_days: 30
+
+# Dashboard settings
+dashboard:
+  enabled: true
+  host: 0.0.0.0
+  port: 8080
+  auth_required: false 
