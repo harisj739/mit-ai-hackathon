@@ -150,7 +150,7 @@ def dashboard(port: int, host: str):
         uvicorn.run(app, host=host, port=port)
     
     except ImportError:
-        click.echo("Dashboard dependencies not installed. Install with: pip install uvicorn")
+        click.echo("Dashboard dependencies not installed. Install with: pip install -r requirements.txt")
     except Exception as e:
         logger.error(f"Failed to start dashboard: {e}")
         click.echo(f"Failed to start dashboard: {e}")

@@ -12,8 +12,7 @@ from typing import Any, Dict, List, Optional, Union
 from datetime import datetime, timedelta
 import logging
 from sqlalchemy import create_engine, Column, Integer, String, Text, DateTime, JSON, Boolean
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker, Session
+from sqlalchemy.orm import sessionmaker, Session, DeclarativeBase
 from sqlalchemy.exc import SQLAlchemyError
 import pandas as pd
 from .config import settings
@@ -21,7 +20,8 @@ from .logger import get_logger
 
 logger = get_logger(__name__)
 
-Base = declarative_base()
+class Base(DeclarativeBase):
+    pass
 
 
 class TestRun(Base):
@@ -487,6 +487,92 @@ class StorageManager:
             logger.error(f"CSV export failed: {e}")
             raise
     
+    def get_all_test_runs(self, limit: int = 50) -> List[Dict[str, Any]]:
+        """
+        Retrieve all test runs with a limit.
+        
+        Args:
+            limit: Maximum number of test runs to return
+            
+        Returns:
+            List of test runs
+        """
+        try:
+            with self.get_session() as session:
+                test_runs = session.query(TestRun).order_by(TestRun.created_at.desc()).limit(limit).all()
+                return [
+                    {
+                        'id': test_run.id,
+                        'run_id': test_run.run_id,
+                        'name': f"Test Run {test_run.run_id[:8]}",
+                        'model_name': test_run.model_name,
+                        'status': test_run.status,
+                        'created_at': test_run.created_at.isoformat(),
+                        'updated_at': test_run.updated_at.isoformat(),
+                        'config': test_run.config or {},
+                        'results': test_run.results or {},
+                        'metadata': test_run.meta or {}
+                    }
+                    for test_run in test_runs
+                ]
+        
+        except SQLAlchemyError as e:
+            logger.error(f"Failed to retrieve test runs: {e}")
+            return []
+    
+    def get_overall_stats(self) -> Dict[str, Any]:
+        """
+        Get overall statistics across all test runs.
+        
+        Returns:
+            Overall statistics
+        """
+        try:
+            with self.get_session() as session:
+                # Count test runs
+                total_test_runs = session.query(TestRun).count()
+                
+                # Count test results
+                total_test_results = session.query(TestResult).count()
+                
+                # Calculate success rate
+                success_count = session.query(TestResult).filter(TestResult.status == 'success').count()
+                success_rate = (success_count / total_test_results * 100) if total_test_results > 0 else 0
+                
+                # Calculate average latency
+                avg_latency_result = session.query(TestResult.latency).filter(TestResult.latency.isnot(None)).all()
+                avg_latency = sum(r[0] for r in avg_latency_result) / len(avg_latency_result) if avg_latency_result else 0
+                
+                # Count vulnerabilities (rough estimate based on error messages)
+                vulnerability_count = session.query(TestResult).filter(
+                    TestResult.status == 'error',
+                    TestResult.error_message.like('%injection%')
+                ).count()
+                
+                # Get last run
+                last_run = session.query(TestRun).order_by(TestRun.created_at.desc()).first()
+                last_run_date = last_run.created_at.isoformat() if last_run else None
+                
+                return {
+                    'total_test_runs': total_test_runs,
+                    'total_test_cases': total_test_results,
+                    'success_rate': success_rate,
+                    'average_latency': avg_latency,
+                    'total_vulnerabilities': vulnerability_count,
+                    'last_run': last_run_date
+                }
+        
+        except SQLAlchemyError as e:
+            logger.error(f"Failed to get overall stats: {e}")
+            return {
+                'total_test_runs': 0,
+                'total_test_cases': 0,
+                'success_rate': 0.0,
+                'average_latency': 0,
+                'total_vulnerabilities': 0,
+                'last_run': None
+            }
+
     def get_storage_stats(self) -> Dict[str, Any]:
         """
         Get storage statistics.

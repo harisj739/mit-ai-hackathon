@@ -179,3 +179,184 @@
 2025-08-10 01:24:13,706 - __main__ - INFO - Starting dashboard on 0.0.0.0:8080
 2025-08-10 01:24:14,344 - src.core.storage - INFO - Database tables created successfully
 2025-08-10 01:24:14,344 - src.core.storage - INFO - Storage manager initialized with database: postgresql+psycopg://hj739:h%4073R%231$&Ha9M4!z%40@localhost:5432/stressor_db
+2025-08-10 01:37:28,739 - src.core.storage - INFO - Database tables created successfully
+2025-08-10 01:37:28,741 - src.core.storage - INFO - Storage manager initialized with database: sqlite:///./failproof_llm.db
+2025-08-10 01:37:28,741 - src.generators.adversarial - INFO - Generated 5 adversarial test cases
+2025-08-10 01:37:28,741 - src.generators.prompt_injection - INFO - Generated 3 prompt injection test cases
+2025-08-10 01:37:28,780 - src.core.storage - INFO - Database tables created successfully
+2025-08-10 01:37:28,780 - src.core.storage - INFO - Storage manager initialized with database: sqlite:///./failproof_llm.db
+2025-08-10 01:37:28,780 - src.runners.base - INFO - Initialized OpenAIRunner for model: gpt-5
+2025-08-10 01:37:28,780 - src.runners.openai_runner - INFO - Initialized OpenAI runner for model: gpt-5
+2025-08-10 01:37:29,119 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:37:29,120 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:37:29,671 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:37:29,693 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:37:30,643 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:37:30,646 - src.runners.openai_runner - CRITICAL - OpenAI API quota exceeded: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}. Please check your plan and billing details.
+2025-08-10 01:37:30,646 - src.runners.openai_runner - ERROR - OpenAI API error for test case 00878b7c-ae2c-4590-93a2-bc326b319a7f: Insufficient OpenAI API quota: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+2025-08-10 01:37:30,710 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:37:30,711 - src.runners.openai_runner - CRITICAL - OpenAI API quota exceeded: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}. Please check your plan and billing details.
+2025-08-10 01:37:30,711 - src.runners.openai_runner - ERROR - OpenAI API error for test case b87beebc-9a2c-452f-9999-5f9bac22fa61: Insufficient OpenAI API quota: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+2025-08-10 01:37:30,719 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:37:30,852 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:37:31,346 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:37:31,392 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:37:32,363 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:37:32,365 - src.runners.openai_runner - CRITICAL - OpenAI API quota exceeded: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}. Please check your plan and billing details.
+2025-08-10 01:37:32,365 - src.runners.openai_runner - ERROR - OpenAI API error for test case ef270985-cffc-4fd8-a528-1144247b93d5: Insufficient OpenAI API quota: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+2025-08-10 01:37:32,382 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:37:32,384 - src.runners.openai_runner - CRITICAL - OpenAI API quota exceeded: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}. Please check your plan and billing details.
+2025-08-10 01:37:32,386 - src.runners.openai_runner - ERROR - OpenAI API error for test case 8b6ee65d-d3eb-4b89-ac80-5a2f93481cf0: Insufficient OpenAI API quota: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+2025-08-10 01:37:32,471 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:37:32,510 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:37:33,072 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:37:33,084 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:37:34,050 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:37:34,052 - src.runners.openai_runner - CRITICAL - OpenAI API quota exceeded: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}. Please check your plan and billing details.
+2025-08-10 01:37:34,053 - src.runners.openai_runner - ERROR - OpenAI API error for test case a336fbca-9c05-4c5a-a841-95e917d2d6ac: Insufficient OpenAI API quota: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+2025-08-10 01:37:34,129 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:37:34,130 - src.runners.openai_runner - CRITICAL - OpenAI API quota exceeded: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}. Please check your plan and billing details.
+2025-08-10 01:37:34,131 - src.runners.openai_runner - ERROR - OpenAI API error for test case 160fd4d9-3aa5-414b-8bcf-191229293fd5: Insufficient OpenAI API quota: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+2025-08-10 01:37:34,154 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:37:34,230 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:37:34,620 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:37:34,719 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:37:35,693 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:37:35,693 - src.runners.openai_runner - CRITICAL - OpenAI API quota exceeded: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}. Please check your plan and billing details.
+2025-08-10 01:37:35,694 - src.runners.openai_runner - ERROR - OpenAI API error for test case 7cc68003-e863-4e6c-a6af-e22ab496eb9d: Insufficient OpenAI API quota: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+2025-08-10 01:37:35,765 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:37:35,767 - src.runners.openai_runner - CRITICAL - OpenAI API quota exceeded: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}. Please check your plan and billing details.
+2025-08-10 01:37:35,767 - src.runners.openai_runner - ERROR - OpenAI API error for test case b1fc0d4a-9e72-4af3-a876-fc997cd9b894: Insufficient OpenAI API quota: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+2025-08-10 01:37:56,522 - src.core.storage - INFO - Database tables created successfully
+2025-08-10 01:37:56,523 - src.core.storage - INFO - Storage manager initialized with database: sqlite:///./failproof_llm.db
+2025-08-10 01:37:56,529 - src.core.storage - INFO - Database tables created successfully
+2025-08-10 01:37:56,530 - src.core.storage - INFO - Storage manager initialized with database: sqlite:///./failproof_llm.db
+2025-08-10 01:41:24,329 - src.core.storage - INFO - Database tables created successfully
+2025-08-10 01:41:24,331 - src.core.storage - INFO - Storage manager initialized with database: sqlite:///./failproof_llm.db
+2025-08-10 01:41:24,332 - src.generators.adversarial - INFO - Generated 5 adversarial test cases
+2025-08-10 01:41:24,332 - src.generators.prompt_injection - INFO - Generated 3 prompt injection test cases
+2025-08-10 01:41:24,351 - src.core.storage - INFO - Database tables created successfully
+2025-08-10 01:41:24,351 - src.core.storage - INFO - Storage manager initialized with database: sqlite:///./failproof_llm.db
+2025-08-10 01:41:24,351 - src.runners.base - INFO - Initialized OpenAIRunner for model: gpt-5
+2025-08-10 01:41:24,352 - src.runners.openai_runner - INFO - Initialized OpenAI runner for model: gpt-5
+2025-08-10 01:41:24,639 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:41:24,645 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:41:25,191 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:41:25,242 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:41:26,144 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:41:26,146 - src.runners.openai_runner - CRITICAL - OpenAI API quota exceeded: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}. Please check your plan and billing details.
+2025-08-10 01:41:26,146 - src.runners.openai_runner - ERROR - OpenAI API error for test case 94b7ef76-9eb7-4f11-acd2-76661dbbd767: Insufficient OpenAI API quota: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+2025-08-10 01:41:26,236 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:41:26,237 - src.runners.openai_runner - CRITICAL - OpenAI API quota exceeded: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}. Please check your plan and billing details.
+2025-08-10 01:41:26,237 - src.runners.openai_runner - ERROR - OpenAI API error for test case 99460e6b-a19d-4831-bfa5-13916c183cf4: Insufficient OpenAI API quota: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+2025-08-10 01:41:26,248 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:41:26,341 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:41:26,823 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:41:26,879 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:41:27,656 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:41:27,657 - src.runners.openai_runner - CRITICAL - OpenAI API quota exceeded: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}. Please check your plan and billing details.
+2025-08-10 01:41:27,658 - src.runners.openai_runner - ERROR - OpenAI API error for test case 19f9089b-5b19-40ef-9554-6a901c3ed961: Insufficient OpenAI API quota: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+2025-08-10 01:41:27,751 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:41:27,806 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:41:27,807 - src.runners.openai_runner - CRITICAL - OpenAI API quota exceeded: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}. Please check your plan and billing details.
+2025-08-10 01:41:27,808 - src.runners.openai_runner - ERROR - OpenAI API error for test case c1224a7a-8955-41d2-a322-270ffeff4133: Insufficient OpenAI API quota: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+2025-08-10 01:41:27,914 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:41:28,228 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:41:28,485 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:41:29,154 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:41:29,156 - src.runners.openai_runner - CRITICAL - OpenAI API quota exceeded: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}. Please check your plan and billing details.
+2025-08-10 01:41:29,157 - src.runners.openai_runner - ERROR - OpenAI API error for test case 8f7fee35-bde7-4535-bed7-b9197baddb94: Insufficient OpenAI API quota: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+2025-08-10 01:41:29,262 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:41:29,368 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:41:29,370 - src.runners.openai_runner - CRITICAL - OpenAI API quota exceeded: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}. Please check your plan and billing details.
+2025-08-10 01:41:29,370 - src.runners.openai_runner - ERROR - OpenAI API error for test case 11c090d9-b60b-4784-a157-16b4048a91ff: Insufficient OpenAI API quota: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+2025-08-10 01:41:29,479 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:41:29,786 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:41:30,026 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:41:30,730 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:41:30,732 - src.runners.openai_runner - CRITICAL - OpenAI API quota exceeded: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}. Please check your plan and billing details.
+2025-08-10 01:41:30,732 - src.runners.openai_runner - ERROR - OpenAI API error for test case bb78702c-0cc2-4783-909f-8c8dde3f1ff4: Insufficient OpenAI API quota: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+2025-08-10 01:41:31,060 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-08-10 01:41:31,061 - src.runners.openai_runner - CRITICAL - OpenAI API quota exceeded: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}. Please check your plan and billing details.
+2025-08-10 01:41:31,062 - src.runners.openai_runner - ERROR - OpenAI API error for test case 215deac0-84fb-4f31-9e76-f2086df1ff67: Insufficient OpenAI API quota: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+2025-08-10 01:41:54,785 - src.core.storage - INFO - Database tables created successfully
+2025-08-10 01:41:54,787 - src.core.storage - INFO - Storage manager initialized with database: sqlite:///./failproof_llm.db
+2025-08-10 01:41:54,795 - src.core.storage - INFO - Database tables created successfully
+2025-08-10 01:41:54,795 - src.core.storage - INFO - Storage manager initialized with database: sqlite:///./failproof_llm.db
+2025-08-10 01:44:43,388 - src.core.storage - ERROR - Database initialization failed: No module named 'psycopg'
+2025-08-10 01:44:52,378 - src.core.storage - INFO - Database tables created successfully
+2025-08-10 01:44:52,379 - src.core.storage - INFO - Storage manager initialized with database: sqlite:///./failproof_llm.db
+2025-08-10 01:44:52,380 - src.generators.adversarial - INFO - Generated 5 adversarial test cases
+2025-08-10 01:44:52,380 - src.generators.prompt_injection - INFO - Generated 3 prompt injection test cases
+2025-08-10 01:44:52,398 - src.core.storage - INFO - Database tables created successfully
+2025-08-10 01:44:52,398 - src.core.storage - INFO - Storage manager initialized with database: sqlite:///./failproof_llm.db
+2025-08-10 01:44:52,398 - src.runners.base - INFO - Initialized OpenAIRunner for model: gpt-5
+2025-08-10 01:44:52,399 - src.runners.openai_runner - INFO - Initialized OpenAI runner for model: gpt-5
+2025-08-10 01:44:59,073 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-10 01:45:04,017 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-10 01:45:13,391 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-10 01:45:15,166 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-10 01:45:29,298 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-10 01:45:29,688 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-10 01:45:36,465 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-10 01:45:44,597 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-08-10 01:48:21,775 - src.core.storage - INFO - Database tables created successfully
+2025-08-10 01:48:21,777 - src.core.storage - INFO - Storage manager initialized with database: sqlite:///./failproof_llm.db
+2025-08-10 01:48:21,784 - src.core.storage - INFO - Database tables created successfully
+2025-08-10 01:48:21,784 - src.core.storage - INFO - Storage manager initialized with database: sqlite:///./failproof_llm.db
+2025-08-10 04:31:23,343 - __main__ - INFO - FailProof LLM CLI initialized
+2025-08-10 04:31:23,345 - __main__ - INFO - Starting dashboard on 0.0.0.0:8080
+2025-08-10 04:31:38,157 - __main__ - INFO - FailProof LLM CLI initialized
+2025-08-10 04:31:38,158 - __main__ - INFO - Starting dashboard on 0.0.0.0:8080
+2025-08-10 04:31:52,922 - __main__ - INFO - FailProof LLM CLI initialized
+2025-08-10 04:31:52,924 - __main__ - INFO - Starting dashboard on 0.0.0.0:8080
+2025-08-10 04:31:52,934 - __main__ - ERROR - Failed to start dashboard: No module named 'src.dashboard'
+2025-08-10 04:32:02,810 - __main__ - INFO - FailProof LLM CLI initialized
+2025-08-10 04:32:02,811 - __main__ - INFO - Starting dashboard on 0.0.0.0:8080
+2025-08-10 04:32:02,829 - __main__ - ERROR - Failed to start dashboard: No module named 'dashboard.app'
+2025-08-10 04:32:20,814 - __main__ - INFO - FailProof LLM CLI initialized
+2025-08-10 04:32:20,817 - __main__ - INFO - Starting dashboard on 0.0.0.0:8080
+2025-08-10 04:32:21,111 - src.core.storage - ERROR - Database initialization failed: No module named 'psycopg'
+2025-08-10 04:32:21,111 - __main__ - ERROR - Failed to start dashboard: No module named 'psycopg'
+2025-08-10 04:36:37,570 - __main__ - INFO - FailProof LLM CLI initialized
+2025-08-10 04:36:37,572 - __main__ - INFO - Starting dashboard on 0.0.0.0:8080
+2025-08-10 04:38:23,342 - __main__ - INFO - FailProof LLM CLI initialized
+2025-08-10 04:38:23,343 - __main__ - INFO - Starting dashboard on 0.0.0.0:8080
+2025-08-10 04:44:57,865 - __main__ - INFO - FailProof LLM CLI initialized
+2025-08-10 04:44:57,867 - __main__ - INFO - Starting dashboard on 0.0.0.0:8080
+2025-08-10 04:46:07,122 - __main__ - INFO - FailProof LLM CLI initialized
+2025-08-10 04:46:07,124 - __main__ - INFO - Starting dashboard on 0.0.0.0:8080
+2025-08-10 04:46:07,539 - src.core.storage - ERROR - Database initialization failed: No module named 'psycopg'
+2025-08-10 04:46:24,677 - __main__ - INFO - FailProof LLM CLI initialized
+2025-08-10 04:46:24,679 - __main__ - INFO - Starting dashboard on 0.0.0.0:8080
+2025-08-10 04:46:24,947 - src.core.storage - INFO - Database tables created successfully
+2025-08-10 04:46:24,947 - src.core.storage - INFO - Storage manager initialized with database: sqlite:///./failproof_llm.db
+2025-08-10 04:53:20,359 - __main__ - INFO - FailProof LLM CLI initialized
+2025-08-10 04:53:20,361 - __main__ - INFO - Starting dashboard on 0.0.0.0:8080
+2025-08-10 04:53:20,946 - src.core.storage - INFO - Database tables created successfully
+2025-08-10 04:53:20,947 - src.core.storage - INFO - Storage manager initialized with database: sqlite:///./failproof_llm.db
+2025-08-10 05:04:26,006 - __main__ - INFO - FailProof LLM CLI initialized
+2025-08-10 05:04:26,007 - __main__ - INFO - Starting dashboard on 0.0.0.0:8080
+2025-08-10 05:04:26,192 - src.core.storage - INFO - Database tables created successfully
+2025-08-10 05:04:26,193 - src.core.storage - INFO - Storage manager initialized with database: sqlite:///./failproof_llm.db
+2025-08-10 05:04:42,867 - src.core.storage - INFO - Test run saved: 376dffe9-24f2-435c-93fa-0c2cdf4c273d
+2025-08-10 05:04:42,965 - src.core.storage - INFO - Test run saved: 5751e6c3-6217-4d03-a46c-aa2cadb78fb2
+2025-08-10 05:04:42,996 - src.core.storage - INFO - Test run saved: 3a7ad11e-f618-4183-9b57-37e797ef64fd
+2025-08-10 05:04:43,033 - src.core.storage - INFO - Test run saved: f67555ad-48e7-442b-921b-3c6102eb712f
+2025-08-10 05:04:43,051 - src.core.storage - INFO - Test run saved: 482e300a-bebb-4339-ae1d-666bff9ae5e2
+2025-08-10 05:05:32,138 - __main__ - INFO - FailProof LLM CLI initialized
+2025-08-10 05:05:32,140 - __main__ - INFO - Starting dashboard on 0.0.0.0:8080
+2025-08-10 05:05:32,288 - src.core.storage - INFO - Database tables created successfully
+2025-08-10 05:05:32,288 - src.core.storage - INFO - Storage manager initialized with database: sqlite:///./failproof_llm.db
+2025-08-10 05:08:13,058 - __main__ - INFO - FailProof LLM CLI initialized
+2025-08-10 05:08:13,060 - __main__ - INFO - Starting dashboard on 0.0.0.0:8080
+2025-08-10 05:08:13,230 - src.core.storage - INFO - Database tables created successfully
+2025-08-10 05:08:13,230 - src.core.storage - INFO - Storage manager initialized with database: sqlite:///./failproof_llm.db
+2025-08-10 05:09:13,254 - __main__ - INFO - FailProof LLM CLI initialized
+2025-08-10 05:09:13,255 - __main__ - INFO - Starting dashboard on 0.0.0.0:8080
+2025-08-10 05:09:13,410 - src.core.storage - INFO - Database tables created successfully
+2025-08-10 05:09:13,410 - src.core.storage - INFO - Storage manager initialized with database: sqlite:///./failproof_llm.db
+2025-08-10 05:10:43,447 - __main__ - INFO - FailProof LLM CLI initialized
+2025-08-10 05:10:43,449 - __main__ - INFO - Starting dashboard on 0.0.0.0:8080
+2025-08-10 05:10:43,663 - src.core.storage - INFO - Database tables created successfully
+2025-08-10 05:10:43,664 - src.core.storage - INFO - Storage manager initialized with database: sqlite:///./failproof_llm.db
