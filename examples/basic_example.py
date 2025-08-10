@@ -123,7 +123,7 @@ def perform_analysis(results):
     failure_categories = {}
     for result in results:
         if result['status'] != 'success':
-            category = result.get('category', 'unknown')
+            category = result['status']  # Use the actual status as the category
             failure_categories[category] = failure_categories.get(category, 0) + 1
     
     # Detect vulnerabilities

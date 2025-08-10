@@ -126,9 +126,13 @@ class OpenAIRunner(BaseRunner):
         """
         params = {
             'model': self.model_name,
-            'max_tokens': kwargs.get('max_tokens', settings.default_max_tokens),
-            'temperature': kwargs.get('temperature', settings.default_temperature),
+            'max_completion_tokens': kwargs.get('max_tokens', settings.default_max_tokens),
         }
+
+        if self.model_name == "gpt-5":
+            params['temperature'] = 1.0
+        else:
+            params['temperature'] = kwargs.get('temperature', settings.default_temperature)
         
         # Add optional parameters
         optional_params = ['top_p', 'frequency_penalty', 'presence_penalty', 'stop']
@@ -156,14 +160,20 @@ class OpenAIRunner(BaseRunner):
             )
             return response
         
-        except openai.RateLimitError as e:
-            logger.warning(f"Rate limit exceeded: {e}")
-            # Wait and retry
-            await asyncio.sleep(60)
-            return await self._make_api_call(messages, params)
-        
+        except openai.APIStatusError as e:
+            if e.status_code == 429 and "insufficient_quota" in str(e):
+                logger.critical(f"OpenAI API quota exceeded: {e}. Please check your plan and billing details.")
+                raise ValueError(f"Insufficient OpenAI API quota: {e}")
+            elif e.status_code == 429:
+                logger.warning(f"OpenAI API rate limit exceeded (temporary): {e}. Retrying after delay.")
+                await asyncio.sleep(60) # Wait for 1 minute before retrying temporary rate limits
+                return await self._make_api_call(messages, params)
+            else:
+                logger.error(f"OpenAI API status error: {e}")
+                raise
+
         except openai.APIError as e:
-            logger.error(f"OpenAI API error: {e}")
+            logger.error(f"OpenAI general API error: {e}")
             raise
     
     def _process_response(self, response: Any, test_case: Dict[str, Any], latency: int) -> Dict[str, Any]:
@@ -252,6 +262,12 @@ class OpenAIRunner(BaseRunner):
                 # For other errors, return the result
                 return result
             
+            except ValueError as e: # Catch the specific ValueError for insufficient quota
+                if "Insufficient OpenAI API quota" in str(e):
+                    logger.error(f"Unrecoverable error: {e}")
+                    return self._create_error_result(test_case, str(e))
+                raise # Re-raise if it's another ValueError
+
             except Exception as e:
                 logger.error(f"Attempt {attempt + 1} failed: {e}")
                 if attempt == max_retries - 1:

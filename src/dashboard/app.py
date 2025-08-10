@@ -2,7 +2,7 @@
 FastAPI dashboard for Stressor.
 """
 
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -55,7 +55,7 @@ class TestResultResponse(BaseModel):
 
 
 @app.get("/", response_class=HTMLResponse)
-async def dashboard_home(request):
+async def dashboard_home(request: Request):
     """Main dashboard page."""
     if templates:
         return templates.TemplateResponse("dashboard.html", {"request": request})

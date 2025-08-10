@@ -40,7 +40,7 @@ class Settings(BaseSettings):
     # Testing Configuration
     default_model: str = Field("gpt-5", env="DEFAULT_MODEL")
     default_max_tokens: int = Field(2048, env="DEFAULT_MAX_TOKENS")
-    default_temperature: float = Field(0.1, env="DEFAULT_TEMPERATURE")
+    default_temperature: float = Field(1.0, env="DEFAULT_TEMPERATURE")
     
     # Logging Configuration
     log_level: str = Field("INFO", env="LOG_LEVEL")

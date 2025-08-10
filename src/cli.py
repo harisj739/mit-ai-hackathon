@@ -24,6 +24,8 @@ logger = get_logger(__name__)
 @click.option('--config', type=click.Path(exists=True), help='Configuration file path')
 def cli(debug: bool, config: str):
     """FailProof LLM - Stress-testing Framework for AI Systems."""
+    global settings # Declare settings as global
+
     # Set up logging
     log_level = 'DEBUG' if debug else settings.log_level
     setup_logging(log_level=log_level)
