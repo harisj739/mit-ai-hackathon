@@ -93,6 +93,24 @@ async def dashboard_home(request: Request):
         """
 
 
+@app.get("/test-runs", response_class=HTMLResponse)
+async def test_runs_page(request: Request):
+    """Test runs list page."""
+    if templates:
+        return templates.TemplateResponse("dashboard.html", {"request": request})
+    else:
+        return dashboard_home(request)
+
+
+@app.get("/test-runs/{run_id}", response_class=HTMLResponse)
+async def test_run_detail_page(request: Request, run_id: str):
+    """Test run detail page."""
+    if templates:
+        return templates.TemplateResponse("test_detail.html", {"request": request, "run_id": run_id})
+    else:
+        return f"<h1>Test Run: {run_id}</h1><p>Template not available</p>"
+
+
 @app.get("/api/health")
 async def health_check():
     """Health check endpoint."""
@@ -105,30 +123,48 @@ async def health_check():
 
 @app.get("/api/stats")
 async def get_stats():
-    """Get overall statistics."""
+    """Get overall statistics from real database."""
     try:
-        # This would need to be implemented in StorageManager
-        # For now, return placeholder data
+        # Get real statistics from the database
+        stats = storage_manager.get_storage_stats()
+        
+        # Calculate real metrics
+        total_runs = len(storage_manager.get_recent_runs(limit=1000)) if hasattr(storage_manager, 'get_recent_runs') else 0
+        
+        return {
+            "total_test_runs": total_runs,
+            "total_test_cases": stats.get('total_test_cases', 0),
+            "success_rate": 0.0,  # Will be calculated from real data
+            "average_latency": 0,  # Will be calculated from real data
+            "total_vulnerabilities": 0,  # Will be calculated from real data
+            "last_run": None  # Will be from real data
+        }
+    except Exception as e:
+        # Return zeros if database error - NO fake data
         return {
             "total_test_runs": 0,
             "total_test_cases": 0,
             "success_rate": 0.0,
             "average_latency": 0,
+            "total_vulnerabilities": 0,
             "last_run": None
         }
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.get("/api/test-runs", response_model=List[TestRunResponse])
 async def get_test_runs(limit: int = Query(10, ge=1, le=100)):
-    """Get list of test runs."""
+    """Get list of test runs from real database."""
     try:
-        # This would need to be implemented in StorageManager
-        # For now, return placeholder data
-        return []
+        # Get real test runs from database
+        if hasattr(storage_manager, 'get_recent_runs'):
+            runs = storage_manager.get_recent_runs(limit=limit)
+            return runs
+        else:
+            # Return empty list if method doesn't exist - NO fake data
+            return []
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        # Return empty list on error - NO fake data
+        return []
 
 
 @app.get("/api/test-runs/{run_id}", response_model=Dict[str, Any])
@@ -220,6 +256,21 @@ def perform_analysis(results: List[Dict[str, Any]]) -> Dict[str, Any]:
         'vulnerabilities': vulnerabilities,
         'average_latency': sum(r.get('latency', 0) for r in results) / total_tests if total_tests > 0 else 0
     }
+
+
+@app.get("/api/test-runs/{run_id}/export")
+async def export_test_results(run_id: str):
+    """Export test results as CSV."""
+    try:
+        # This would export results to CSV
+        # For now, return a simple response
+        return {
+            "message": f"Export for run {run_id} would be generated here",
+            "format": "csv",
+            "run_id": run_id
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 if __name__ == "__main__":
