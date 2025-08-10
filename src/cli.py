@@ -88,7 +88,7 @@ def generate(count: int, test_type: str, output: str, category: str):
 
 
 @cli.command()
-@click.option('--model', default='gpt-3.5-turbo', help='Model to test')
+@click.option('--model', default='gpt-5', help='Model to test')
 @click.option('--test-cases', type=click.Path(exists=True), help='Test cases file path')
 @click.option('--config', type=click.Path(exists=True), help='Configuration file path')
 @click.option('--output', type=click.Path(), help='Results output path')

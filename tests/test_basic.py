@@ -187,7 +187,7 @@ class TestIntegration:
         """Test configuration loading from file."""
         with tempfile.NamedTemporaryFile(mode='w', suffix='.yaml', delete=False) as f:
             config_data = """
-            model_name: gpt-3.5-turbo
+            model_name: gpt-5
             debug: true
             max_requests_per_minute: 30
             """
@@ -196,7 +196,7 @@ class TestIntegration:
         
         try:
             settings = Settings.load_from_file(config_path)
-            assert settings.model_name == 'gpt-3.5-turbo'
+            assert settings.model_name == 'gpt-5'
             assert settings.debug is True
             assert settings.max_requests_per_minute == 30
         finally:

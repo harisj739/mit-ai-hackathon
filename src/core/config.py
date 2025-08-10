@@ -5,7 +5,7 @@ Configuration management for Stressor.
 import os
 from typing import Optional, Dict, Any
 from pathlib import Path
-from pydantic import BaseSettings, Field, validator
+from pydantic import Field, field_validator
 from pydantic_settings import BaseSettings
 import yaml
 
@@ -17,7 +17,7 @@ class Settings(BaseSettings):
     openai_api_key: Optional[str] = Field(None, env="OPENAI_API_KEY")
     
     # Database Configuration
-    database_url: str = Field("sqlite:///./stressor.db", env="DATABASE_URL")
+    database_url: str = Field(..., env="DATABASE_URL")
     
     # Security Settings
     secret_key: str = Field(..., env="SECRET_KEY", min_length=32)
@@ -57,7 +57,8 @@ class Settings(BaseSettings):
     debug: bool = Field(False, env="DEBUG")
     environment: str = Field("development", env="ENVIRONMENT")
     
-    @validator("data_directory", "log_directory", "backup_directory", pre=True)
+    @field_validator("data_directory", "log_directory", "backup_directory", mode="before")
+    @classmethod
     def create_directories(cls, v):
         """Create directories if they don't exist."""
         if isinstance(v, str):
@@ -65,7 +66,8 @@ class Settings(BaseSettings):
         v.mkdir(parents=True, exist_ok=True)
         return v
     
-    @validator("secret_key", "encryption_key")
+    @field_validator("secret_key", "encryption_key")
+    @classmethod
     def validate_key_length(cls, v):
         """Validate key lengths for security."""
         if len(v) < 32:

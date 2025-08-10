@@ -27,7 +27,7 @@ Stressor is a comprehensive stress-testing framework designed to help enterprise
 
 ```bash
 git clone <repository-url>
-cd failproof-llm
+cd stressor
 ```
 
 ### Step 2: Install Dependencies
@@ -39,7 +39,7 @@ pip install -r requirements.txt
 ### Step 3: Set Up Environment Variables
 
 ```bash
-cp env.example .env
+echo > .env
 # Edit .env with your API keys and configurations
 ```
 
@@ -70,7 +70,7 @@ python -m src.cli generate --count 10 --type prompt_injection --output data/inje
 Run tests against an OpenAI model:
 
 ```bash
-python -m src.cli run --model gpt-3.5-turbo --test-cases data/test_cases.json --output results.json
+python -m src.cli run --model gpt-5 --test-cases data/test_cases.json --output results.json
 ```
 
 ### 3. View Results
@@ -98,7 +98,7 @@ generation:
       - special_characters
 
 execution:
-  model: gpt-4
+  model: gpt-5
   max_concurrent: 10
   timeout: 60
 ```
@@ -124,20 +124,20 @@ python -m src.cli generate --count 30 --type prompt_injection --output my_tests.
 
 ```bash
 # Run with default test cases
-python -m src.cli run --model gpt-3.5-turbo
+python -m src.cli run --model gpt-5
 
 # Run with custom test cases
-python -m src.cli run --model gpt-4 --test-cases my_tests.json
+python -m src.cli run --model gpt-5 --test-cases my_tests.json
 
 # Run with concurrent execution
-python -m src.cli run --model gpt-3.5-turbo --concurrent 10
+python -m src.cli run --model gpt-5 --concurrent 10
 ```
 
 #### Analyze Results
 
 ```bash
 # Analyze specific run
-python -m src.cli analyze --run-id run_20240101_120000_gpt-3.5-turbo
+python -m src.cli analyze --run-id run_20240101_120000_gpt-5
 
 # Analyze all runs
 python -m src.cli analyze
@@ -160,7 +160,7 @@ generator = AdversarialGenerator()
 test_cases = generator.generate(count=50)
 
 # Run tests
-runner = OpenAIRunner(model_name="gpt-3.5-turbo")
+runner = OpenAIRunner(model_name="gpt-5")
 results = await runner.run_concurrent_tests(test_cases, max_concurrent=5)
 
 # Save results
@@ -185,7 +185,7 @@ async def run_comprehensive_test():
     test_cases.extend(injection_gen.generate(20))
     
     # Run tests
-    runner = OpenAIRunner(model_name="gpt-4")
+    runner = OpenAIRunner(model_name="gpt-5")
     results = await runner.run_concurrent_tests(test_cases, max_concurrent=3)
     
     # Analyze results
@@ -219,9 +219,10 @@ results = asyncio.run(run_comprehensive_test())
 
 ### Data Privacy
 
-1. **Local Processing**: Sensitive data can be processed locally
-2. **Encryption**: Data is encrypted in transit and at rest
-3. **Retention**: Configurable data retention policies
+1. **Password Hashing**: Passwords are hashed utilizing PBKDF2 and HMAC
+2. **Local Processing**: Sensitive data can be processed locally
+3. **Encryption**: Data is encrypted in transit and at rest
+4. **Retention**: Configurable data retention policies
 
 ## Storage Considerations
 
@@ -234,7 +235,7 @@ results = asyncio.run(run_comprehensive_test())
 ### Data Organization
 
 ```
-failproof-llm/
+stressor/
 ├── data/                    # Test data and results
 │   ├── test_cases/         # Generated test cases
 │   ├── results/            # Test results
@@ -342,11 +343,3 @@ class StorageManager:
 2. **Issues**: Search existing GitHub issues
 3. **Discussions**: Use GitHub Discussions for questions
 4. **Support**: Contact the development team
-
-## Contributing
-
-We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. 

@@ -11,15 +11,11 @@ This example shows how to:
 import asyncio
 import json
 from pathlib import Path
-import sys
 
-# Add the src directory to the path
-sys.path.append(str(Path(__file__).parent.parent / "src"))
-
-from generators import AdversarialGenerator, PromptInjectionGenerator
-from runners import OpenAIRunner
-from core.storage import StorageManager
-from core.config import settings
+from src.generators import AdversarialGenerator, PromptInjectionGenerator
+from src.runners import OpenAIRunner
+from src.core.storage import StorageManager
+from src.core.config import settings
 
 
 async def main():
@@ -70,7 +66,7 @@ async def main():
     
     # Initialize runner
     print("\n3. Initializing OpenAI runner...")
-    runner = OpenAIRunner(model_name="gpt-3.5-turbo")
+    runner = OpenAIRunner(model_name="gpt-5")
     
     # Run tests
     print("\n4. Running stress tests...")

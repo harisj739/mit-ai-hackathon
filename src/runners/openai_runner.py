@@ -23,7 +23,7 @@ class OpenAIRunner(BaseRunner):
         Initialize the OpenAI runner.
         
         Args:
-            model_name: OpenAI model name (e.g., 'gpt-3.5-turbo', 'gpt-4')
+            model_name: OpenAI model name (e.g., 'gpt-5')
             api_key: OpenAI API key
             **kwargs: Additional arguments
         """

@@ -15,7 +15,7 @@ Stressor is a comprehensive stress-testing framework designed to help enterprise
    - `DomainSpecificGenerator`: Industry-specific test scenarios
 
 2. **Test Runners**
-   - `OpenAIRunner`: Tests OpenAI models (GPT-3.5, GPT-4, etc.)
+   - `OpenAIRunner`: Tests OpenAI models (GPT-5 and later)
    - `AnthropicRunner`: Tests Anthropic models (Claude, etc.)
    - `HuggingFaceRunner`: Tests local and Hugging Face models
    - `StressRunner`: Orchestrates comprehensive stress testing
@@ -104,7 +104,7 @@ failproof-llm/
 python -m src.cli generate --count 50 --type adversarial --output test_cases.json
 
 # Run stress tests
-python -m src.cli run --model gpt-3.5-turbo --test-cases test_cases.json --output results.json
+python -m src.cli run --model gpt-5 --test-cases test_cases.json --output results.json
 
 # Start dashboard
 python -m src.cli dashboard --port 8080
@@ -129,7 +129,7 @@ test_cases.extend(adversarial_gen.generate(30))
 test_cases.extend(injection_gen.generate(20))
 
 # Run tests
-runner = OpenAIRunner(model_name="gpt-3.5-turbo")
+runner = OpenAIRunner(model_name="gpt-5")
 results = await runner.run_concurrent_tests(test_cases, max_concurrent=5)
 
 # Save results

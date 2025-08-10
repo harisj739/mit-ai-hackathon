@@ -36,7 +36,7 @@ class TestRun(Base):
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     config = Column(JSON)
     results = Column(JSON)
-    metadata = Column(JSON)
+    meta = Column("metadata", JSON)
 
 
 class TestCase(Base):
@@ -67,7 +67,7 @@ class TestResult(Base):
     error_message = Column(Text)
     latency = Column(Integer)  # in milliseconds
     created_at = Column(DateTime, default=datetime.utcnow)
-    metadata = Column(JSON)
+    meta = Column("metadata", JSON)
 
 
 class StorageManager:
@@ -140,7 +140,7 @@ class StorageManager:
                     status=run_data['status'],
                     config=run_data.get('config', {}),
                     results=run_data.get('results', {}),
-                    metadata=run_data.get('metadata', {})
+                    meta=run_data.get('metadata', {})
                 )
                 session.add(test_run)
                 session.commit()
@@ -203,7 +203,7 @@ class StorageManager:
                     output_data=result_data.get('output_data', ''),
                     error_message=result_data.get('error_message', ''),
                     latency=result_data.get('latency', 0),
-                    metadata=result_data.get('metadata', {})
+                    meta=result_data.get('metadata', {})
                 )
                 session.add(test_result)
                 session.commit()
@@ -237,7 +237,7 @@ class StorageManager:
                         'updated_at': test_run.updated_at.isoformat(),
                         'config': test_run.config or {},
                         'results': test_run.results or {},
-                        'metadata': test_run.metadata or {}
+                        'metadata': test_run.meta or {}
                     }
                 return None
         
@@ -268,7 +268,7 @@ class StorageManager:
                         'error_message': result.error_message,
                         'latency': result.latency,
                         'created_at': result.created_at.isoformat(),
-                        'metadata': result.metadata or {}
+                        'metadata': result.meta or {}
                     }
                     for result in results
                 ]
