@@ -46,8 +46,8 @@ stressor/
 
 ```bash
 # Clone the repository
-git clone https://github.com/harisj739/mit-ai-hackathon.git
-cd failproof-llm
+git clone https://github.com/harisj739/stressor.git
+cd stressor
 
 # Install dependencies
 pip install -r requirements.txt
