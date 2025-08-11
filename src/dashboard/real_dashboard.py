@@ -5,7 +5,6 @@ FastAPI dashboard for Stressor.
 from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
-from fastapi.templating import Jinja2Templates
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Dict, Any, Optional
@@ -16,11 +15,12 @@ from ..core.storage import StorageManager
 from ..core.config import settings
 
 app = FastAPI(title="FailProof LLM Dashboard", version="1.0.0")
+app.mount("/", StaticFiles(directory="/Users/hj739/hamzacode/mit-ai-hackathon-1/src/dashboard/app/build"), name="static")
 
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
+    allow_origins=["http://localhost:3000"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -33,13 +33,6 @@ storage_manager = StorageManager()
 static_dir = Path(__file__).parent / "static"
 if static_dir.exists():
     app.mount("/static", StaticFiles(directory=static_dir), name="static")
-
-# Templates
-templates_dir = Path(__file__).parent / "templates"
-if templates_dir.exists():
-    templates = Jinja2Templates(directory=templates_dir)
-else:
-    templates = None
 
 
 class TestRunResponse(BaseModel):
@@ -64,45 +57,6 @@ class TestResultResponse(BaseModel):
     error_message: Optional[str]
     latency: int
     created_at: str
-
-
-@app.get("/", response_class=HTMLResponse)
-async def dashboard_home(request: Request):
-    """Main dashboard page."""
-    if templates:
-        return templates.TemplateResponse("dashboard.html", {"request": request})
-    else:
-        return """
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <title>FailProof LLM Dashboard</title>
-            <style>
-                body { font-family: Arial, sans-serif; margin: 40px; }
-                .container { max-width: 1200px; margin: 0 auto; }
-                .header { background: #f5f5f5; padding: 20px; border-radius: 8px; }
-                .section { margin: 20px 0; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
-                .metric { display: inline-block; margin: 10px; padding: 15px; background: #e7f3ff; border-radius: 5px; }
-                .metric h3 { margin: 0; color: #0066cc; }
-                .metric p { margin: 5px 0; font-size: 24px; font-weight: bold; }
-            </style>
-        </head>
-        <body>
-            <div class="container">
-                <div class="header">
-                    <h1>FailProof LLM Dashboard</h1>
-                    <p>Stress-testing Framework for AI Systems</p>
-                </div>
-                <div class="section">
-                    <h2>Quick Actions</h2>
-                    <a href="/api/test-runs">View Test Runs</a> |
-                    <a href="/api/stats">View Statistics</a> |
-                    <a href="/api/health">Health Check</a>
-                </div>
-            </div>
-        </body>
-        </html>
-        """
 
 
 @app.get("/api/health")

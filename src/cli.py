@@ -3,13 +3,11 @@ Command-line interface for Stressor.
 """
 
 import click
-import asyncio
 import json
-import yaml
 from pathlib import Path
 from typing import Dict, Any, Optional
 from datetime import datetime
-
+import asyncio
 from .core.config import settings
 from .core.logger import setup_logging, get_logger
 from .core.storage import StorageManager
@@ -92,11 +90,15 @@ def generate(count: int, test_type: str, output: str, category: str):
 @cli.command()
 @click.option('--model', default='gpt-5', help='Model to test')
 @click.option('--test-cases', type=click.Path(exists=True), help='Test cases file path')
-@click.option('--config', type=click.Path(exists=True), help='Configuration file path')
 @click.option('--output', type=click.Path(), help='Results output path')
 @click.option('--concurrent', default=5, help='Number of concurrent tests')
-async def run(model: str, test_cases: str, config: str, output: str, concurrent: int):
+def run(model: str, test_cases: str, output: str, concurrent: int):
     """Run stress tests against an LLM."""
+    # Wrap the async logic in asyncio.run()
+    asyncio.run(run_async(model, test_cases, output, concurrent))
+
+async def run_async(model: str, test_cases: str, output: str, concurrent: int):
+    """Async implementation of the run command."""
     
     logger.info(f"Starting stress test for model: {model}")
     
@@ -263,4 +265,4 @@ def version():
 
 
 if __name__ == '__main__':
-    cli() 
+    cli()
